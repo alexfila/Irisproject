@@ -7,18 +7,19 @@
 
 import SwiftUI
 
-struct MainView: View {
+struct SecondView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("text")
+            HStack {
+                Text("date picker")
+                CategoryView()
+            }
         }
         .padding()
     }
 }
 
 #Preview {
-    MainView()
+    SecondView()
 }

@@ -1,18 +1,35 @@
-//
-//  DatepickerView.swift
-//  Irisproject
-//
-//  Created by Alex Fila on 24/10/24.
-//
-
 import SwiftUI
 
-struct DatepickerView: View {
+struct ContentView: View {
+    @State private var selectedDate = Date()   // State to hold the selected date
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            // DatePicker with wheel style
+            DatePicker("Select a Date", selection: $selectedDate, displayedComponents: .date)
+                .datePickerStyle(WheelDatePickerStyle())  // Set the DatePicker to wheel style
+                .labelsHidden()  // Hides the default label to only show the wheel picker
+                .padding()
+
+            // Display the selected date
+            Text("Selected Date: \(formattedDate(selectedDate))")
+                .font(.headline)
+                .padding()
+
+        }
+        .padding()
+    }
+    
+    // Helper function to format the date
+    private func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: date)
     }
 }
 
-#Preview {
-    DatepickerView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
